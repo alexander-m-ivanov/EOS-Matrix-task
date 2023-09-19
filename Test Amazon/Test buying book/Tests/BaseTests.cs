@@ -18,7 +18,6 @@ namespace Test_buying_book.Tests
     {
         String url = "https://www.amazon.co.uk/";
         private IWebDriver driver;
-        private NavigationPanePage navigationPanePage;
         private LandingPage landingPage;
         private BotDetectionPage botDetectionPage;
         private SearchResultsPage searchResultsPage;
@@ -43,7 +42,6 @@ namespace Test_buying_book.Tests
                 botDetectionPage.omitBotDetection();
             }
             landingPage = new LandingPage(driver);
-            navigationPanePage = new NavigationPanePage(driver);
         }
 
         [Test]
@@ -56,8 +54,8 @@ namespace Test_buying_book.Tests
         public void UA2_SearchInSectionBooksForHarryPotterAndTheCursedChild()
         {
             landingPage.clickAcceptCookies();
-            navigationPanePage.selecrSearchCategory("Books");
-            navigationPanePage.Search("Harry Potter and the Cursed Child");
+            landingPage.selecrSearchCategory("Books");
+            landingPage.Search("Harry Potter and the Cursed Child");
 
             searchResultsPage = new SearchResultsPage(driver);
             string firstResultName = searchResultsPage.getFirstResultItemName();

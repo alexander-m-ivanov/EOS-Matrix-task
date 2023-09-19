@@ -9,7 +9,7 @@ using Test_buying_book.Utilities;
 
 namespace Test_buying_book.Pages
 {
-    class SearchResultsPage : BasePage
+    class SearchResultsPage : NavigationPanePage
     {
         private IWebElement firstResultContainer;
         private IWebElement firstResultName;

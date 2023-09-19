@@ -9,7 +9,7 @@ using Test_buying_book.Utilities;
 
 namespace Test_buying_book.Pages
 {
-    class LandingPage : BasePage
+    class LandingPage : NavigationPanePage
     {
         private IWebElement acceptCookies;
 

@@ -9,7 +9,7 @@ using Test_buying_book.Utilities;
 
 namespace Test_buying_book.Pages
 {
-    class ProductDetailsPage : BasePage
+    class ProductDetailsPage : NavigationPanePage
     {
         private IWebElement productTitle;
         private IWebElement price;

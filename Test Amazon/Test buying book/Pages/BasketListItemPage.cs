@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Test_buying_book.Pages
 {
-    class BasketListItemPage : BasePage
+    class BasketListItemPage : NavigationPanePage
     {
         private ReadOnlyCollection<IWebElement> basketListItems;
         private IWebElement listItem;
