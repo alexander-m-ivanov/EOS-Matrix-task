@@ -1,11 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test_buying_book.Pages
 {
@@ -16,6 +10,7 @@ namespace Test_buying_book.Pages
         private string listItemTitle;
         private IWebElement listItemPrice;
         private IWebElement giftCheckbox;
+        private IWebElement itemQuantity;
 
         public BasketListItemPage(IWebDriver driver, string itemName) : base(driver)
         {
@@ -36,6 +31,17 @@ namespace Test_buying_book.Pages
 
             listItemPrice = initializeElement(By.CssSelector(".sc-product-price"), listItem);
             giftCheckbox = initializeElement(By.CssSelector(".a-checkbox input"), listItem);
+            itemQuantity = initializeElement(By.CssSelector(".a-dropdown-prompt"), listItem);
+        }
+
+        public string getItemQuantity()
+        {
+            return GetInnerHtml(itemQuantity);
+        }
+
+        public int getNumberOfItemsInShoppingBasket()
+        {
+            return basketListItems.Count;
         }
 
         public string getProductName()

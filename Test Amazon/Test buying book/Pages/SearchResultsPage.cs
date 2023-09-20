@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Test_buying_book.Utilities;
 
 namespace Test_buying_book.Pages
@@ -19,7 +14,7 @@ namespace Test_buying_book.Pages
 
         public SearchResultsPage(IWebDriver driver) : base(driver)
         {
-            firstResultContainer = initializeElement(By.CssSelector("div[data-index='2']"));
+            firstResultContainer = initializeElement(By.CssSelector("div[data-cel-widget='search_result_2']"));
             firstResultName = initializeElement(By.CssSelector("h2 span"), firstResultContainer);
 
             firstResultPriceContainer = initializeElement(By.CssSelector(".puis-price-instructions-style"), firstResultContainer);

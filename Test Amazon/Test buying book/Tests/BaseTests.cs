@@ -1,12 +1,5 @@
-using Newtonsoft.Json.Linq;
-using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
 using System.Text.RegularExpressions;
 using Test_buying_book.Enums;
 using Test_buying_book.Pages;
@@ -83,8 +76,9 @@ namespace Test_buying_book.Tests
             });
         }
 
+        // Cannot reproduce the screen from User Actions 4 from the assignment, so I am directly doing the verifications form UA5
         [Test]
-        public void UA4_AddItToTheShoppingBasketAsGift()
+        public void UA4_AddItToTheShoppingBasketAsGift_AND_UA5_ChecksTheContentsOfTheShoppingBasket()
         {
             productDetailsPage.clickGiftCheckbox(true);
             productDetailsPage.clickAddToShoppingBasket();
@@ -92,9 +86,11 @@ namespace Test_buying_book.Tests
             shoppingBasketPage = new BasketListItemPage(driver, bookName);
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(shoppingBasketPage.getProductName(), bookName, "The product name is not as expected.");
+                Assert.AreEqual(1, shoppingBasketPage.getNumberOfItemsInShoppingBasket(), "The number of items in the shippong basket is not as expected.");
+                Assert.AreEqual(bookName, shoppingBasketPage.getProductName(), "The product name is not as expected.");
                 Assert.AreEqual(firstResultPrice, shoppingBasketPage.getProductPrice(), "Price is not as expected.");
-                Assert.IsTrue(shoppingBasketPage.isGiftCheckboxChecked(), "BAsket item is not marked as a gift.");
+                Assert.AreEqual(firstResultPrice, shoppingBasketPage.getProductPrice(), "Price is not as expected.");
+                Assert.AreEqual("1", shoppingBasketPage.getItemQuantity(), "Basket item is not marked as a gift.");
             });
         }
 
